@@ -13,6 +13,7 @@ mongoose.connect('mongodb+srv://reshma24799:Newjob24@mern-blog.x0vficy.mongodb.n
     console.log(error);
 })
 const app = express();
+
 app.use(express.json()); //allow json a sthe input of backend
 
 app.listen(3000,() => {
@@ -20,3 +21,13 @@ app.listen(3000,() => {
 });
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
+
+app.use((err,req, res, next) => {
+    const statuCode = err.statuCode || 500;
+    const message = err.message || 'Internal server error';
+    res.status(statuCode).json({
+        success: false,
+        statuCode,
+        message
+    });
+})
