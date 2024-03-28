@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true,
+    },
+    profilePicture:{
+        type: String,
+        default: "https://th.bing.com/th/id/OIP.6W2ogLXdf48OKWgl_5jSPgAAAA?rs=1&pid=ImgDetMain",
     }
 },{timestamps: true}// time of creation and update
 );
