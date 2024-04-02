@@ -5,8 +5,7 @@ import userRoutes from './routes/user.route.js'
 import authRoutes from './routes/auth.route.js'
 dotenv.config();
 
-//getting error, will fix later
-mongoose.connect('mongodb+srv://reshma24799:Newjob24@mern-blog.x0vficy.mongodb.net/mern-blog?retryWrites=true&w=majority').then
+mongoose.connect(process.env.MONGO).then
 (() => {
     console.log("database is connected")
 }).catch((error) => {
