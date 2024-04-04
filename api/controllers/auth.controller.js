@@ -36,7 +36,7 @@ export const signin = async (req,res, next) => {
             return next(errorHandler(400,'Invalid Password'))
         }
         const token =jwt.sign(
-            {id: validUser._id},process.env.JWT_SECRET 
+            {id: validUser._id, isAdmin: validUser.isAdmin},process.env.JWT_SECRET 
         );
         const {password: pass, ...rest} = validUser._doc; //to separate the password and other values in response when sign in happens
         res.status(200).cookie('access_token',token, {httpOnly: true}).json(rest)
@@ -51,7 +51,7 @@ export const google = async (req,res, next) => {
     try {
         const validUser = await User.findOne({email});
         if(validUser){
-            const token = jwt.sign({id: validUser._id}, process.env.JWT_SECRET);
+            const token = jwt.sign({id: validUser._id, isAdmin: validUser.isAdmin}, process.env.JWT_SECRET);
             const {password: pass, ...rest} = validUser._doc;
             res.status(200).cookie('access_token',token, {httpOnly: true}).json(rest)
         } else {
@@ -64,7 +64,7 @@ export const google = async (req,res, next) => {
                 profilePicture: googlePhotoURL,
             }); 
             await newUser.save();
-            const token = jwt.sign({id: newUser._id},process.env.JWT_SECRET);
+            const token = jwt.sign({id: newUser._id, isAdmin: newUser.isAdmin},process.env.JWT_SECRET);
             const {password: pass, ...rest} = newUser._doc;
             res.status(200).cookie('access_token',token, {httpOnly: true}).json(rest)
         }
