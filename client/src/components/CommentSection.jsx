@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { Button, Textarea } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import Comment from './Comment';
+import { useNavigate } from 'react-router-dom'
 
 export default function CommentSection({postId}) {
+    const navigate = useNavigate();
     const { currentUser } = useSelector((state) => state.user);
     const [comment, setComment] = useState('');
     const [commentError, setCommentError] = useState(null);
@@ -47,6 +49,29 @@ export default function CommentSection({postId}) {
             setCommentError(error.message);
         }
       
+    }
+    const handleLike = async (commentId) => {
+        try {
+            if(!currentUser){
+                navigate('/sign-in');
+                return;
+            }
+            const res = await fetch(`/api/comment/likeComment/${commentId}`,{
+                method: "PUT",
+            })
+            if(res.ok){
+                const data = await res.json();
+                setComments(comments.map((comment) => 
+                    comment._id === commentId ? {
+                        ...comment,
+                        likes: data.likes,
+                        numberOfLikes: data.likes.length
+                    } : comment
+                ))
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
     }
   return (
     <div className='max-w-2xl mx-auto w-full p-3'>
@@ -102,7 +127,8 @@ export default function CommentSection({postId}) {
                     comments.map(comment => (
                         <Comment
                         key={comment._id} 
-                        comment={comment}/>
+                        comment={comment}
+                        onLike={handleLike}/>
                     ))
                 }
                 </>
