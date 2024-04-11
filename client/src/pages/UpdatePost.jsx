@@ -68,7 +68,7 @@ export default function UpdatePost() {
                     setImageFileUploadProgress(null);
                     setImageFileUploadError(null);
                     setImageFileUploading(false);
-                    setFormData({...formData, image : downloadURL});
+                    setFormData({...formData, image : downloadURL, _id: postId});
                 });
             }
            );
@@ -113,10 +113,11 @@ export default function UpdatePost() {
                     placeholder='title' 
                     required is='title' 
                     className='flex-1'  
-                    onChange={(e) => setFormData({...formData, title: e.target.value})}
+                    onChange={(e) => setFormData({...formData, title: e.target.value, _id: postId})
+                }
                 />
                 <Select 
-                    onChange={(e) => setFormData({...formData, category: e.target.value})}
+                    onChange={(e) => setFormData({...formData, category: e.target.value, _id: postId})}
                     value={formData.category}>
                     <option value="uncategorized">Select a category</option>
                     <option value="pattern">Crotchet  pattern</option>
@@ -164,7 +165,7 @@ export default function UpdatePost() {
                 className='h-72 mb-12' 
                 required
                 onChange={(value) => {
-                    setFormData({...formData, content: value})
+                    setFormData({...formData, content: value, _id: postId})
                 }}
             />
             <Button 
