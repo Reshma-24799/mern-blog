@@ -100,7 +100,7 @@ export default function Search() {
                         type="text"
                         placeholder='Search..'
                         id='searchTerm'
-                        className='hidden lg:inline'
+                        className='lg:inline'
                         value={sidebarData.searchTerm}
                         onChange={handleChange}
                     />

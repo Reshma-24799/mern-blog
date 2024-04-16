@@ -15,17 +15,6 @@ const FooterComponent = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 sm:gap-6">
                     <div>
-                        <Footer.Title  title="ABOUT"/>
-                        <Footer.LinkGroup col>
-                            <Footer.Link
-                                href="https://www.lovecrafts.com/en-us/l/crochet/crochet-patterns/free-crochet-patterns"
-                                target="_blank"
-                                rel='noepener noreferrer'>
-                                Free Crotchet Patterns
-                            </Footer.Link>
-                        </Footer.LinkGroup>
-                    </div>
-                    <div>
                         <Footer.Title  title="FOLLOW US"/>
                         <Footer.LinkGroup col>
                             <Footer.Link
@@ -38,15 +27,11 @@ const FooterComponent = () => {
                         </Footer.LinkGroup>
                     </div>
                     <div>
-                        <Footer.Title  title="LEGAL"/>
+                        <Footer.Title  title="ABOUT"/>
                         <Footer.LinkGroup col>
                             <Footer.Link href="#">
                                 Privacy Policy
                             </Footer.Link>
-                            <Footer.Link href="#">
-                                Terms &amp; Conditions
-                            </Footer.Link>
-                            
                         </Footer.LinkGroup>
                     </div>
                 </div>
