@@ -5,8 +5,8 @@ export default function About() {
     <div className='min-h-screen flex items-center justify-center'>
       <div className='max-w-2xl mx-auto p-3'>
         <div >
-          <h1 className='text-3xl font-semibold text-center my-7'>ABOUT RESHMA CROTCHET'S</h1>
-          <div className='text-md text-gray-500 flex flex-col gap-6 dark:text-white'>
+          <h1 className='text-3xl font-bold text-center my-7'>ABOUT RESHMA CROTCHET'S</h1>
+          <div className='text-md text-gray-900 flex flex-col gap-6 dark:text-white'>
              <p>
              In the early days of lockdown, as uncertainty loomed large and anxieties ran high, 
              I stumbled upon a crochet hook and a skein of yarn tucked away in the depths of my closet.

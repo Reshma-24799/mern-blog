@@ -29,7 +29,7 @@ const FooterComponent = () => {
                     <div>
                         <Footer.Title  title="ABOUT"/>
                         <Footer.LinkGroup col>
-                            <Footer.Link href="#">
+                            <Footer.Link href="/privacy-policy">
                                 Privacy Policy
                             </Footer.Link>
                         </Footer.LinkGroup>
